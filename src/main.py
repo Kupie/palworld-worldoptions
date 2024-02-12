@@ -10,9 +10,10 @@ from lib.palworldsettings import create_palworldsettings
 
 def exceptionhook(type, value, traceback, oldhook=sys.excepthook):
     oldhook(type, value, traceback)
-    print("Looks like you encountered a critcal error")
+    print("Looks like you encountered a critical error")
     print("Check your settings and open a bug report if the issue persists")
-    input("Press RETURN to close")
+    #input("Press RETURN to close")
+	sys.exit(1)
 
 
 sys.excepthook = exceptionhook
@@ -23,7 +24,7 @@ def settings_check(path: str) -> None:
         print("Found settings")
     else:
         print(f"Could not find PalWorldSettings.ini at {path}")
-        input("Press RETURN to close")
+        #input("Press RETURN to close")
         sys.exit(1)
 
 
@@ -32,7 +33,7 @@ def uesave_check(path: str) -> None:
         print("Found uesave")
     else:
         print(f"uesave does not exist at {path}")
-        input("Press RETURN to close")
+        #input("Press RETURN to close")
         sys.exit(1)
 
 
@@ -49,7 +50,8 @@ def convert_to_worldoptions(uesave_path: str, settings_file: str, output_path: s
     save_worldoptions(uesave_path, config_settings_json, output_path)
     print("Complete!")
     print("Restart your palworld server to apply the changes")
-    input("Press RETURN to close")
+    #input("Press RETURN to close")
+	sys.exit(0)
 
 
 def main() -> None:
